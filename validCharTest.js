@@ -1,4 +1,5 @@
 var btnCheck = document.getElementById('btnCheck');
+var btnAutoFix = document.getElementById('btnAutoFix');
 var strInput = document.getElementById('inputText');
 var preRules = document.getElementById('rules');
 
@@ -9,6 +10,13 @@ btnCheck.addEventListener('click', ()=>{
 	if(messGood) {
 		alert("Message is good to go!");
 	}
+}, false);
+
+
+btnAutoFix.addEventListener('click', ()=>{
+	strInput.value = strInput.value.replace(/“/gi, `"`);
+	strInput.value = strInput.value.replace(/‘/gi, `'`);
+	strInput.value = strInput.value.replace(/’/gi, `'`);
 }, false);
 
 
@@ -41,7 +49,8 @@ function validCharTest(text)
 function printValidChars() {
 	var VALIDCHARACTERS = " 1234567890-=qwertyuiop[]\asdfghjkl;''zxcvbnm,./~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:ZXCVBNM<>?áéíóúüñ¿¡" + `\"\\`;
 
-	var str = `(Note: " is not the same as “ \nAnd    ' is not the same as ‘) \n\n\nThe only valid chars are: `;
+	var str = `(Note: " is not the same as “ \nAnd    ' is not the same as ‘\nThe "Auto Fix" button will correct these.)
+Also, no emoji are allowed :(\n\n\nThe only valid chars are: `;
 	for(var i=0; i<VALIDCHARACTERS.length; i++) {
 		str += '\n" ' + VALIDCHARACTERS[i] + ' "';
 	}
